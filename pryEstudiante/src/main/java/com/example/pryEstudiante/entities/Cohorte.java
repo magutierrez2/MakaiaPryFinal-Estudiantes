@@ -18,15 +18,20 @@ public class Cohorte {
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_inicio")
     private Date fechaInicio;
+    @ManyToOne
+    @JoinColumn(name = "administrador_id")
+    private Administrador administrador;
+
     @OneToMany(mappedBy = "cohorte", cascade = CascadeType.ALL)
     private List<Estudiante> estudiantes;
-
     public Cohorte() {
     }
 
-    public Cohorte(String nombre, Date fechaInicio, List<Estudiante> estudiantes) {
+    public Cohorte(Long id, String nombre, Date fechaInicio, Administrador administrador, List<Estudiante> estudiantes) {
+        this.id = id;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
+        this.administrador = administrador;
         this.estudiantes = estudiantes;
     }
 
@@ -42,22 +47,11 @@ public class Cohorte {
         return fechaInicio;
     }
 
-    public List<Estudiante> getEstudiantes() {
-        return estudiantes;
-    }
-    @ManyToOne
-    @JoinColumn(name = "administrador_id")
-    private Administrador administrador;
-
-    public Cohorte(Administrador administrador) {
-        this.administrador = administrador;
-    }
-
     public Administrador getAdministrador() {
         return administrador;
     }
 
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
     }
 }

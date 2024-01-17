@@ -17,10 +17,11 @@ public class Estudiante {
 
     @Column(length = 100)
     private String contrasena;
-
     @ManyToOne
     @JoinColumn(name = "cohorte_id")
     private Cohorte cohorte;
+
+
 
     public Estudiante() {
     }
