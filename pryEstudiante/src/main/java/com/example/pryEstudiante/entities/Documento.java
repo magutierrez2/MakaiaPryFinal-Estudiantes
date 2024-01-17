@@ -25,4 +25,43 @@ public class Documento {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha_actualizacion")
     private Date fechaActualizacion;
+    @ManyToOne
+    @JoinColumn(name = "aspirante_id")
+    private Aspirante aspirante;
+
+    public Documento() {
+    }
+
+    public Documento(Long id, String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Aspirante aspirante) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tipoContenido = tipoContenido;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
+        this.aspirante = aspirante;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTipoContenido() {
+        return tipoContenido;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public Aspirante getAspirante() {
+        return aspirante;
+    }
 }
