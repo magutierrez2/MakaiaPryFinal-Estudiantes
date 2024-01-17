@@ -2,6 +2,8 @@ package com.example.pryEstudiante.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Administrador")
 public class Administrador {
@@ -22,6 +24,16 @@ public class Administrador {
 
     public Administrador() {
     }
+    @OneToMany(mappedBy = "administrador", cascade = CascadeType.ALL)
+    private List<Cohorte> cohortes;
+
+    public Administrador(List<Cohorte> cohortes)
+    {this.cohortes = cohortes;}
+
+    public List<Cohorte> getCohortes() {return cohortes;}
+
+    public void setCohortes(List<Cohorte> cohortes) {
+        this.cohortes = cohortes;}
 
     public Administrador(String nombre, String usuarioAdmin, String contrasenaAdmin) {
 
@@ -45,6 +57,7 @@ public class Administrador {
     public String getContrasenaAdmin() {
         return contrasenaAdmin;
     }
+
 
 
 }

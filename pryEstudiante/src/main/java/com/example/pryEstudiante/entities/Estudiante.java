@@ -17,4 +17,38 @@ public class Estudiante {
 
     @Column(length = 100)
     private String contrasena;
+
+    @ManyToOne
+    @JoinColumn(name = "cohorte_id")
+    private Cohorte cohorte;
+
+    public Estudiante() {
+    }
+
+    public Estudiante(String nombre, String usuario, String contrasena, Cohorte cohorte) {
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.cohorte = cohorte;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public Cohorte getCohorte() {
+        return cohorte;
+    }
 }
