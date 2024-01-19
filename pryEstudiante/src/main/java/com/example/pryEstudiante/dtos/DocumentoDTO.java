@@ -8,16 +8,17 @@ public class DocumentoDTO {
     private String tipoContenido;
     private Date fechaCreacion;
     private Date fechaActualizacion;
-
+    private Long aspiranteId;
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(Long id, String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion) {
+    public DocumentoDTO(Long id, String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Long aspiranteId) {
         this.id = id;
         this.nombre = nombre;
         this.tipoContenido = tipoContenido;
         this.fechaCreacion = fechaCreacion;
         this.fechaActualizacion = fechaActualizacion;
+        this.aspiranteId = aspiranteId;
     }
 
     public Long getId() {
@@ -58,5 +59,13 @@ public class DocumentoDTO {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public Long getAspiranteId() {
+        return aspiranteId;
+    }
+
+    public void setAspiranteId(Long aspiranteId) {
+        this.aspiranteId = aspiranteId;
     }
 }
