@@ -1,4 +1,8 @@
 package com.example.pryEstudiante.repositories;
 
-public interface EstudianteRepository {
+import com.example.pryEstudiante.entities.Estudiante;
+import org.springframework.data.repository.CrudRepository;
+
+
+public interface EstudianteRepository extends CrudRepository<Estudiante, Long> {
 }

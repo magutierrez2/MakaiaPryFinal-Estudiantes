@@ -27,7 +27,7 @@ public class Administrador {
     @OneToMany(mappedBy = "administradorEnvio", cascade = CascadeType.ALL)
     private List<Documento> documentosEnviados;
 
-    public Administrador() {
+    public Administrador(Long id, String nombre) {
     }
 
     public Administrador(Long id, String nombre, String usuarioAdmin, String contrasenaAdmin, List<Cohorte> cohortes, List<Documento> documentosEnviados) {
@@ -58,4 +58,9 @@ public class Administrador {
     public List<Cohorte> getCohortes() {return cohortes;}
 
     public List<Documento> getDocumentosEnviados() {return documentosEnviados;}
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }
+
