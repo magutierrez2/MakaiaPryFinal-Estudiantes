@@ -2,7 +2,7 @@ package com.example.pryEstudiante.entities;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -27,13 +27,17 @@ public class Cohorte {
     public Cohorte() {
     }
 
-    public Cohorte(Long id, String nombre, Date fechaInicio, Administrador administrador, List<Estudiante> estudiantes) {
-        this.id = id;
+    public Cohorte(String nombre, Date fechaInicio, Administrador administrador, Estudiante estudiante) {
+        this.estudiantes = estudiantes;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
         this.administrador = administrador;
-        this.estudiantes = estudiantes;
+
     }
+
+    public Cohorte(String nombre, Date fechaInicio, Estudiante estudiante) {
+    }
+
 
     public Long getId() {
         return id;
@@ -53,5 +57,25 @@ public class Cohorte {
 
     public List<Estudiante> getEstudiantes() {
         return estudiantes;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    public void setEstudiantes(List<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
     }
 }

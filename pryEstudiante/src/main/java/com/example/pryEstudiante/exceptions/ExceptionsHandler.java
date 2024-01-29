@@ -17,4 +17,8 @@ public class ExceptionsHandler {
         ResponseErrorDTO res = new ResponseErrorDTO(e.getMessage(), e.getCode().value());
         return new ResponseEntity<ResponseErrorDTO>(res, e.getCode());
     }
+    public ResponseEntity<ResponseErrorDTO> handleCohorteException(CohorteException e) {
+        ResponseErrorDTO res = new ResponseErrorDTO( e.getCode().value());
+        return new ResponseEntity<ResponseErrorDTO>(res, e.getCode());
+    }
 }
