@@ -8,12 +8,13 @@ import com.example.pryEstudiante.repositories.EstudianteRepository;
 import com.example.pryEstudiante.repositories.CohorteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
-@org.springframework.stereotype.Service
+@Service
 public class CohorteService {
 
     CohorteRepository cohRepository;
@@ -29,7 +30,7 @@ public class CohorteService {
         Estudiante estudiante = this.estRepository
                 .findById(dto.getId())
                 .orElseThrow(() -> new CohorteException("El estudiante no existe", HttpStatus.BAD_REQUEST));
-        Cohorte nuevoCohorte = new Cohorte(dto.getNombre(),  dto.getFechaInicio(),  estudiante);
+        Cohorte nuevoCohorte = new Cohorte(dto.getNombre(),  dto.getFechaInicio(),  estudiante );
         return this.cohRepository.save(nuevoCohorte);
     }
 
@@ -51,12 +52,10 @@ public class CohorteService {
     public Cohorte actualizar(Long cohorteId, CohorteDTO dto) {
         Cohorte cohorteExistente = this.cohRepository.findById(cohorteId)
                 .orElseThrow(() -> new CohorteException("El cohorte no existe"));
-        Estudiante estudianteExistente = this.estRepository.findById(dto.getEstudianteId())
-                .orElseThrow(() -> new CohorteException("El estudiante no existe"));
+
 
         cohorteExistente.setNombre(dto.getNombre());
-        cohorteExistente.setFechaInicio(dto.getFechainicio());
-        cohorteExistente.setEstudiante(estudianteExistente);
+        cohorteExistente.setFechaInicio(dto.getFechaInicio());
 
         return this.cohRepository.save(cohorteExistente);
     }

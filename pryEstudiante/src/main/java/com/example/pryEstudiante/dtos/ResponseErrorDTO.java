@@ -9,6 +9,9 @@ public class ResponseErrorDTO {
         this.code = code;
     }
 
+    public ResponseErrorDTO(int value) {
+    }
+
     public String getMessage() {
         return message;
     }
