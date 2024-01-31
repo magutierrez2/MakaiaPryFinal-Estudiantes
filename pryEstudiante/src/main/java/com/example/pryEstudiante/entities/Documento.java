@@ -2,7 +2,7 @@ package com.example.pryEstudiante.entities;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name = "Documento")
@@ -32,8 +32,7 @@ public class Documento {
     public Documento() {
     }
 
-    public Documento(Long id, String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Aspirante aspirante) {
-        this.id = id;
+    public Documento(String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Aspirante aspirante) {
         this.nombre = nombre;
         this.tipoContenido = tipoContenido;
         this.fechaCreacion = fechaCreacion;
@@ -63,5 +62,25 @@ public class Documento {
 
     public Aspirante getAspirante() {
         return aspirante;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTipoContenido(String tipoContenido) {
+        this.tipoContenido = tipoContenido;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public void setAspirante(Aspirante aspirante) {
+        this.aspirante = aspirante;
     }
 }

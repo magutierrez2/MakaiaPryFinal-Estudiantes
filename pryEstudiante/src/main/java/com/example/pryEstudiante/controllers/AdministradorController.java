@@ -1,32 +1,42 @@
 package com.example.pryEstudiante.controllers;
-
 import com.example.pryEstudiante.dtos.AdministradorDTO;
 import com.example.pryEstudiante.entities.Administrador;
 import com.example.pryEstudiante.services.AdministradorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/administradores")
-public class AdministradorController {
+@RequestMapping("api/v1/administrador")
+public class AdministradorController{
+    private AdministradorService admService;
+
     @Autowired
-    private AdministradorService administradorService;
-
-    @GetMapping("/{id}")
-    public ResponseEntity<AdministradorDTO> getAdministrador(@PathVariable Long id) {
-        Administrador administrador = administradorService.getAdministrador(id);
-        AdministradorDTO administradorDTO = mapToDTO(administrador);
-        return ResponseEntity.ok(administradorDTO);
+    public AdministradorController(AdministradorService estService){
+        this.admService = admService;
     }
 
-    // Otros métodos para CRUD, manipulación de cohortes, etc.
-
-    private AdministradorDTO mapToDTO(Administrador administrador) {
-        // Implementa la lógica para mapear la entidad a un DTO
+    @PostMapping()
+    public Administrador crear(@RequestBody AdministradorDTO dto){
+        return this.admService.crear(dto);
     }
-}
+    @GetMapping()
+    public List<Administrador> listar(){
+        return this.admService.listar();
+    }
+    @GetMapping("/administrador/{id}")
+    public Optional<Administrador> buscar(@PathVariable("id") Long id){
+        return this.admService.buscar(id);
+    }
+    @PutMapping("/administrador/{id}")
+    public Administrador actualizar(@PathVariable("id") Long id, @RequestBody AdministradorDTO body){
+        return this.admService.actualizar(id, body);
+    }
+    @DeleteMapping("/administrador/{id}")
+    public void eliminar(@PathVariable("id") Long id){
+        this.admService.eliminar(id);
+    }
+
 }

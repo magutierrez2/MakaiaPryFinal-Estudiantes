@@ -26,7 +26,7 @@ public class Estudiante {
     public Estudiante() {
     }
 
-    public Estudiante(String nombre, String usuario, String contrasena, Cohorte cohorte) {
+    public Estudiante(String nombre, String usuario) {
         this.nombre = nombre;
         this.usuario = usuario;
         this.contrasena = contrasena;
@@ -52,4 +52,13 @@ public class Estudiante {
     public Cohorte getCohorte() {
         return cohorte;
     }
+
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 }
+
