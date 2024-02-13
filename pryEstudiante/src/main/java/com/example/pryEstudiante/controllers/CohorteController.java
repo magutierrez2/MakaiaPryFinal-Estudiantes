@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
+@RequestMapping("api/v1/cohorte")
 public class CohorteController {
     private CohorteService cohService;
+
 
     @Autowired
     public CohorteController(CohorteService cohService){
@@ -18,11 +21,11 @@ public class CohorteController {
     }
 
     @PostMapping()
-    public Cohorte crear(@RequestBody CohorteDTO dto){
+    public CohorteDTO crear(@RequestBody CohorteDTO dto){
         return this.cohService.crear(dto);
     }
     @GetMapping()
-    public List<Cohorte> listar(){
+    public List<CohorteDTO> listar(){
         return this.cohService.listar();
     }
     @GetMapping("/cohorte/{id}")

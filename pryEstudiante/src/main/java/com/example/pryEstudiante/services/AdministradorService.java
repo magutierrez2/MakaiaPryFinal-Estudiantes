@@ -24,7 +24,7 @@ public class AdministradorService {
     }
     public Administrador crear(AdministradorDTO dto){
 
-        Administrador nuevoAdministrador = new Administrador(dto.getId(), dto.getNombre());
+        Administrador nuevoAdministrador = new Administrador(dto.getContrasenaAdmin(),dto.getNombre(),dto.getUsuarioAdmin());
         return this.admRepository.save(nuevoAdministrador);
     }
     public List<Administrador> listar(){

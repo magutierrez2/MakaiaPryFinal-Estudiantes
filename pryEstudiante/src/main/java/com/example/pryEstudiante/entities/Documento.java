@@ -18,16 +18,17 @@ public class Documento {
     @Column(length = 50)
     private String tipoContenido;
 
-    @Temporal(TemporalType.TIMESTAMP)
+
     @Column(name = "fecha_creacion")
     private Date fechaCreacion;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha_actualizacion")
     private Date fechaActualizacion;
-    @ManyToOne
-    @JoinColumn(name = "aspirante_id")
-    private Aspirante aspirante;
+    @ManyToOne(optional = false)
+    Aspirante aspirante;
+    @ManyToOne(optional =false)
+    Administrador administrador;
+
 
     public Documento() {
     }
