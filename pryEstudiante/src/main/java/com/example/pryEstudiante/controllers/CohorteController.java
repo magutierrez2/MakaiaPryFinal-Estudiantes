@@ -15,7 +15,7 @@ public class CohorteController {
     private CohorteService cohService;
 
 
-    @Autowired
+   /* @Autowired
     public CohorteController(CohorteService cohService){
         this.cohService = cohService;
     }
@@ -40,6 +40,6 @@ public class CohorteController {
     public void eliminar(@PathVariable("id") Long id){
         this.cohService.eliminar(id);
     }
-
+*/
 }
 

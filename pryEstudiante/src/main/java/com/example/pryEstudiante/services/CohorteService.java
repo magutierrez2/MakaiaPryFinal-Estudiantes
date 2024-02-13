@@ -44,7 +44,7 @@ public class CohorteService {
         return this.cohRepository.findById(cohorteId);
     }
 
-    public Cohorte actualizar(Long cohorteId, CohorteDTO dto) {
+  /*  public Cohorte actualizar(Long cohorteId, CohorteDTO dto) {
         Cohorte cohorteExistente = this.cohRepository.findById(cohorteId)
                 .orElseThrow(() -> new CohorteException("El cohorte no existe"));
 
@@ -54,4 +54,6 @@ public class CohorteService {
 
         return this.cohRepository.save(cohorteExistente);
     }
+
+   */
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 @RequestMapping("/aspirante")
 
 public class AspiranteController {
-    @Autowired
+   /* @Autowired
     private AspiranteService aspiranteService;
     @GetMapping
     public ArrayList<Aspirante> getAspirantes(){
@@ -21,4 +21,6 @@ public class AspiranteController {
     public Aspirante saveAspirante(@RequestBody Aspirante aspirante){
         return this.aspiranteService.saveAspirante(aspirante);
 }
+
+    */
 }

@@ -7,12 +7,13 @@ import com.example.pryEstudiante.repositories.AdministradorRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
-@org.springframework.stereotype.Service
+@Service
 public class AdministradorService {
 
     AdministradorRepository admRepository;
@@ -22,12 +23,16 @@ public class AdministradorService {
         this.admRepository=admRepository;
 
     }
-    public Administrador crear(AdministradorDTO dto){
-
-        Administrador nuevoAdministrador = new Administrador(dto.getContrasenaAdmin(),dto.getNombre(),dto.getUsuarioAdmin());
-        return this.admRepository.save(nuevoAdministrador);
+    public Administrador crearAdministrador (AdministradorDTO dto){
+        Administrador exists = this.admRepository.findbyId(dto.getId());
+        if (exists != null){
+            throw new AdministradorException("No se ha podido crear el usuario");
+        }
+        Administrador administrador = new Administrador(dto.getNombre(),dto.getUsuarioAdmin(),dto.getContrasenaAdmin());
+        administrador = this.admRepository.save(administrador);
+        return  administrador;
     }
-    public List<Administrador> listar(){
+   /* public List<Administrador> listar(){
         List<Administrador> result = StreamSupport
                 .stream(this.admRepository.findAll().spliterator(),false)
                 .toList();
@@ -47,4 +52,6 @@ public class AdministradorService {
 
         return this.admRepository.save(admExiste);
     }
+
+    */
 }

@@ -11,9 +11,6 @@ public class AdministradorDTO {
     public AdministradorDTO() {
     }
 
-    public AdministradorDTO(Long id) {
-        this.id = id;
-    }
 
     public AdministradorDTO(Long id, String nombre, String usuarioAdmin, String contrasenaAdmin) {
         this.id = id;
