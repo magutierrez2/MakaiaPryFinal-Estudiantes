@@ -2,6 +2,7 @@ package com.example.pryEstudiante.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,6 +26,9 @@ public class Aspirante {
 
     @Column(length = 15)
     private String telefono;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "fecha_inscripcion")
+    private Date fechaInscripcion;
 
     @OneToMany(mappedBy = "aspirante", cascade = CascadeType.ALL)
     private List<Documento> documentosRecibidos;
@@ -36,13 +40,13 @@ public class Aspirante {
     public Aspirante() {
     }
 
-    public Aspirante(Long id, String nombre, String apellido, String correo, String direccion, String telefono, List<Documento> documentosRecibidos, Administrador administradorEnvio) {
-        this.id = id;
+    public Aspirante(String nombre, String apellido, String correo, String direccion, String telefono, Date fechaInscripcion, List<Documento> documentosRecibidos, Administrador administradorEnvio) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.fechaInscripcion = fechaInscripcion;
         this.documentosRecibidos = documentosRecibidos;
         this.administradorEnvio = administradorEnvio;
     }
@@ -77,5 +81,9 @@ public class Aspirante {
 
     public Administrador getAdministradorEnvio() {
         return administradorEnvio;
+    }
+
+    public Date getFechaInscripcion() {
+        return fechaInscripcion;
     }
 }

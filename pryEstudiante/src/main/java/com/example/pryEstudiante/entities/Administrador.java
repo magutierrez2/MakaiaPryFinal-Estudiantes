@@ -21,18 +21,18 @@ public class Administrador {
 
     @Column(length = 50)
     private String contrasenaAdmin;
-    @OneToMany(mappedBy = "administrador", cascade = CascadeType.ALL)
-    private List<Cohorte> cohortes;
+    //@OneToMany(mappedBy = "administrador", cascade = CascadeType.ALL)
+   // private List<Cohorte> cohortes;
 
     public Administrador(Long id, String nombre) {
     }
 
-    public Administrador(Long id, String nombre, String usuarioAdmin, String contrasenaAdmin, List<Cohorte> cohortes, List<Documento> documentosEnviados) {
-        this.id = id;
+
+    public Administrador(String nombre, String usuarioAdmin, String contrasenaAdmin) {
         this.nombre = nombre;
         this.usuarioAdmin = usuarioAdmin;
         this.contrasenaAdmin = contrasenaAdmin;
-        this.cohortes = cohortes;
+        //this.cohortes = cohortes;
     }
 
     public Long getId() {
@@ -50,8 +50,6 @@ public class Administrador {
     public String getContrasenaAdmin() {
         return contrasenaAdmin;
     }
-
-    public List<Cohorte> getCohortes() {return cohortes;}
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

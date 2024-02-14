@@ -1,13 +1,9 @@
 package com.example.pryEstudiante.services;
 import com.example.pryEstudiante.entities.Administrador;
-
 import com.example.pryEstudiante.dtos.AdministradorDTO;
 import com.example.pryEstudiante.exceptions.AdministradorException;
 import com.example.pryEstudiante.repositories.AdministradorRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -24,7 +20,7 @@ public class AdministradorService {
     }
     public Administrador crear(AdministradorDTO dto){
 
-        Administrador nuevoAdministrador = new Administrador(dto.getId(), dto.getNombre());
+        Administrador nuevoAdministrador = new Administrador(dto.getNombre(),dto.getUsuarioAdmin(), dto.getContrasenaAdmin());
         return this.admRepository.save(nuevoAdministrador);
     }
     public List<Administrador> listar(){

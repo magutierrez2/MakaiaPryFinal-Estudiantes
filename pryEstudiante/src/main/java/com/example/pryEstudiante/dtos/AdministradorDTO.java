@@ -12,12 +12,12 @@ public class AdministradorDTO {
     public AdministradorDTO() {
     }
 
-    public AdministradorDTO(Long id, String nombre, String usuarioAdmin, String contrasenaAdmin, List<CohorteDTO> cohortes) {
-        this.id = id;
+    public AdministradorDTO(String nombre, String usuarioAdmin, String contrasenaAdmin) {
+        //this.id = id;
         this.nombre = nombre;
         this.usuarioAdmin = usuarioAdmin;
         this.contrasenaAdmin = contrasenaAdmin;
-        this.cohortes = cohortes;
+        //this.cohortes = cohortes;
     }
 
     public Long getId() {
