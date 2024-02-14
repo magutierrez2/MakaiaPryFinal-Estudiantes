@@ -28,8 +28,8 @@ public class Aspirante {
 
     @OneToMany(mappedBy = "aspirante", cascade = CascadeType.ALL)
     private List<Documento> documentosRecibidos;
-    @OneToOne (optional = false)
-    Estudiante estudiante;
+    @OneToMany (mappedBy = "aspirante", cascade = CascadeType.ALL)
+    List<Estudiante> estudiante;
 
 
 

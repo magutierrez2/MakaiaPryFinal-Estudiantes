@@ -20,8 +20,7 @@ public class Cohorte {
     private Date fechaInicio;
 
 
- @ManyToOne (optional = false)
- Estudiante estudiante;
-
+    @OneToMany (mappedBy = "cohorte", cascade = CascadeType.ALL)
+    List<Estudiante> estudiante;
 
 }
