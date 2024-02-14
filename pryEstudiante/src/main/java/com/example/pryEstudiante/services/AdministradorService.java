@@ -24,34 +24,38 @@ public class AdministradorService {
 
     }
     public Administrador crearAdministrador (AdministradorDTO dto){
-        Administrador exists = this.admRepository.findbyId(dto.getId());
-        if (exists != null){
-            throw new AdministradorException("No se ha podido crear el usuario");
-        }
         Administrador administrador = new Administrador(dto.getNombre(),dto.getUsuarioAdmin(),dto.getContrasenaAdmin());
         administrador = this.admRepository.save(administrador);
         return  administrador;
+
     }
-   /* public List<Administrador> listar(){
+
+    public Administrador buscarId (Long administradorId){
+        Administrador admExiste = this.admRepository.findById(administradorId)
+                .orElseThrow(() -> new AdministradorException("El Administrador no existe"));
+        return  admExiste;
+    }
+
+    public List<Administrador> listarAdministrador(){
         List<Administrador> result = StreamSupport
                 .stream(this.admRepository.findAll().spliterator(),false)
                 .toList();
         return result;
     }
-    public void eliminar(Long adminisrtradorId){
-        this.admRepository.deleteById(adminisrtradorId);
-    }
-    public Optional<Administrador> buscar(Long administradorId){
-        return this.admRepository.findById(administradorId);
-    }
-    public Administrador actualizar(Long administradorId, AdministradorDTO dto){
+
+    public Administrador actualizarAdministrador(Long administradorId, AdministradorDTO dto){
         Administrador admExiste = this.admRepository.findById(administradorId)
                 .orElseThrow(() -> new AdministradorException("El Administrador no existe"));
-
         admExiste.setNombre(dto.getNombre());
-
+        admExiste.setContrasenaAdmin(dto.getContrasenaAdmin());
         return this.admRepository.save(admExiste);
     }
 
-    */
+
+    public void eliminarAdministrador(Long adminisrtradorId){
+        this.admRepository.deleteById(adminisrtradorId);
+    }
+
+
+
 }

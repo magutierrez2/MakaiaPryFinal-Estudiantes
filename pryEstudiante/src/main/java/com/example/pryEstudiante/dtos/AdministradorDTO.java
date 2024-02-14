@@ -12,8 +12,7 @@ public class AdministradorDTO {
     }
 
 
-    public AdministradorDTO(Long id, String nombre, String usuarioAdmin, String contrasenaAdmin) {
-        this.id = id;
+    public AdministradorDTO(String nombre, String usuarioAdmin, String contrasenaAdmin) {
         this.nombre = nombre;
         this.usuarioAdmin = usuarioAdmin;
         this.contrasenaAdmin = contrasenaAdmin;

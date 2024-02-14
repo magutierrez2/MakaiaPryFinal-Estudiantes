@@ -15,7 +15,6 @@ public class Administrador {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
     @Column(length = 50)
-    @JsonManagedReference
     private String nombre;
 
 
@@ -61,5 +60,11 @@ public class Administrador {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void setContrasenaAdmin(String contrasenaAdmin) {
+        this.contrasenaAdmin = contrasenaAdmin;
+    }
 }
+
+
 
