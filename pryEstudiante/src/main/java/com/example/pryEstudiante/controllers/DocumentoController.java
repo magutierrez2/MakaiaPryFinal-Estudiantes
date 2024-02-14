@@ -13,7 +13,7 @@ import java.util.Optional;
 public class DocumentoController{
     private DocumentoService docService;
 
-    @Autowired
+  /*  @Autowired
     public DocumentoController(DocumentoService docService){
         this.docService = docService;
     }
@@ -39,4 +39,6 @@ public class DocumentoController{
         this.docService.eliminar(id);
     }
 
+
+   */
 }

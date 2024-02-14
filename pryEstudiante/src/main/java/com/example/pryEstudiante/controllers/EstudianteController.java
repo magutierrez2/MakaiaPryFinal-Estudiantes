@@ -12,7 +12,7 @@ import java.util.Optional;
 @RequestMapping("api/v1/estudiante")
 public class EstudianteController{
     private EstudianteService estService;
-
+/*
     @Autowired
     public EstudianteController(EstudianteService estService){
         this.estService = estService;
@@ -38,5 +38,7 @@ public class EstudianteController{
     public void eliminar(@PathVariable("id") Long id){
         this.estService.eliminar(id);
     }
+
+ */
 
 }
