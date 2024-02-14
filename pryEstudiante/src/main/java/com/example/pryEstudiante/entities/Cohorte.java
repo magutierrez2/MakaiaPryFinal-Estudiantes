@@ -19,9 +19,7 @@ public class Cohorte {
     @Column(name = "fecha_inicio")
     private Date fechaInicio;
 
-
- @ManyToOne (optional = false)
- Estudiante estudiante;
-
+    @OneToMany (mappedBy = "cohorte", cascade = CascadeType.ALL)
+    List<Estudiante> estudiante;
 
 }

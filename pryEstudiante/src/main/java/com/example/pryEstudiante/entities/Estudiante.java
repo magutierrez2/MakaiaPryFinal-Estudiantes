@@ -23,11 +23,11 @@ public class Estudiante {
 
     @Column(length = 100)
     private String contrasena;
-  @OneToOne(mappedBy = "estudiante",cascade = CascadeType.ALL)
-  private Aspirante aspirante;
 
-  @OneToMany (mappedBy = "estudiante", cascade = CascadeType.ALL)
-  List<Cohorte> cohorte;
+    @ManyToOne (optional = false)
+    private Cohorte cohorte;
+    @ManyToOne (optional = false)
+    private Aspirante aspirante;
 
 
 

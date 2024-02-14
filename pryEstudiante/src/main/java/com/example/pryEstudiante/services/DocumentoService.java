@@ -24,7 +24,7 @@ public class DocumentoService {
         this.docRepository=docRepository;
         this.aspRepository=aspRepository;
     }
-    public Documento crear(DocumentoDTO dto){
+    public Documento crearDocumento(DocumentoDTO dto){
         Aspirante aspirante = this.aspRepository
                 .findById(dto.getId())
                 .orElseThrow(()-> new DocumentoException("El aspirante no exixte", HttpStatusCode.valueOf(400)));
