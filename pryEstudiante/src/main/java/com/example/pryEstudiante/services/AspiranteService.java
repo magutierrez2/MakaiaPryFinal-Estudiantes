@@ -1,24 +1,21 @@
 package com.example.pryEstudiante.services;
 
-import com.example.pryEstudiante.dtos.AspiranteDTO;
 import com.example.pryEstudiante.entities.Aspirante;
-import com.example.pryEstudiante.entities.Documento;
-import com.example.pryEstudiante.exceptions.DocumentoException;
 import com.example.pryEstudiante.repositories.AspiranteRepository;
-import com.example.pryEstudiante.repositories.DocumentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.stereotype.Service;
 
-@org.springframework.stereotype.Service
+import java.util.ArrayList;
+
+@Service
 public class AspiranteService {
-    AspiranteRepository aspRepository;
-    DocumentoRepository docRepository;
-
     @Autowired
-    public AspiranteService(AspiranteRepository aspRepository, DocumentoRepository docRepository){
-        this.aspRepository = aspRepository;
-        this.docRepository = docRepository;
+    AspiranteRepository aspRepository;
+    public ArrayList<Aspirante> getAspirantes(){
+        return (ArrayList<Aspirante>) aspRepository.findAll();
     }
 
-
+    public Aspirante saveAspirante(Aspirante aspirante){
+        return aspRepository.save(aspirante);
+    }
 }

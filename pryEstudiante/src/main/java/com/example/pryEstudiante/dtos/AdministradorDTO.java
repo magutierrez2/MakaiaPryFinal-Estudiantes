@@ -7,17 +7,15 @@ public class AdministradorDTO {
     private String nombre;
     private String usuarioAdmin;
     private String contrasenaAdmin;
-    private List<CohorteDTO> cohortes;
 
     public AdministradorDTO() {
     }
 
+
     public AdministradorDTO(String nombre, String usuarioAdmin, String contrasenaAdmin) {
-        //this.id = id;
         this.nombre = nombre;
         this.usuarioAdmin = usuarioAdmin;
         this.contrasenaAdmin = contrasenaAdmin;
-        //this.cohortes = cohortes;
     }
 
     public Long getId() {
@@ -52,11 +50,5 @@ public class AdministradorDTO {
         this.contrasenaAdmin = contrasenaAdmin;
     }
 
-    public List<CohorteDTO> getCohortes() {
-        return cohortes;
-    }
 
-    public void setCohortes(List<CohorteDTO> cohortes) {
-        this.cohortes = cohortes;
-    }
 }

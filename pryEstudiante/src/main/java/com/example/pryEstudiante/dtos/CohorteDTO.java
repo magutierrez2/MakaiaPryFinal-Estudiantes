@@ -1,5 +1,10 @@
 package com.example.pryEstudiante.dtos;
 
+import com.example.pryEstudiante.entities.Cohorte;
+import com.example.pryEstudiante.entities.Estudiante;
+import org.springframework.util.CollectionUtils;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -7,19 +12,21 @@ public class CohorteDTO {
     private Long id;
     private String nombre;
     private Date fechaInicio;
-    private AdministradorDTO administrador;
-    private List<EstudianteDTO> estudiantes;
+    private Long administrador_id;
+    private Long estudiante_id;
 
     public CohorteDTO() {
     }
 
-    public CohorteDTO(Long id, String nombre, Date fechaInicio, AdministradorDTO administrador, List<EstudianteDTO> estudiantes) {
+    public CohorteDTO(Long id, String nombre, Date fechaInicio, Long administrador_id, Long estudiante_id) {
         this.id = id;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
-        this.administrador = administrador;
-        this.estudiantes = estudiantes;
+        this.administrador_id = administrador_id;
+        this.estudiante_id = estudiante_id;
     }
+
+
 
     public Long getId() {
         return id;
@@ -45,19 +52,19 @@ public class CohorteDTO {
         this.fechaInicio = fechaInicio;
     }
 
-    public AdministradorDTO getAdministrador() {
-        return administrador;
+    public Long getAdministrador_id() {
+        return administrador_id;
     }
 
-    public void setAdministrador(AdministradorDTO administrador) {
-        this.administrador = administrador;
+    public void setAdministrador_id(Long administrador_id) {
+        this.administrador_id = administrador_id;
     }
 
-    public List<EstudianteDTO> getEstudiantes() {
-        return estudiantes;
+    public Long getEstudiante_id() {
+        return estudiante_id;
     }
 
-    public void setEstudiantes(List<EstudianteDTO> estudiantes) {
-        this.estudiantes = estudiantes;
+    public void setEstudiante_id(Long estudiante_id) {
+        this.estudiante_id = estudiante_id;
     }
 }

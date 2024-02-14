@@ -1,17 +1,19 @@
 package com.example.pryEstudiante.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "Administrador")
+
 public class Administrador {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  protected Long id;
-
+  private Long id;
     @Column(length = 50)
     private String nombre;
 
@@ -21,18 +23,20 @@ public class Administrador {
 
     @Column(length = 50)
     private String contrasenaAdmin;
-    //@OneToMany(mappedBy = "administrador", cascade = CascadeType.ALL)
-   // private List<Cohorte> cohortes;
+    @OneToMany(mappedBy = "administrador")
+    List<Documento> documentos;
 
-    public Administrador(Long id, String nombre) {
+
+    public Administrador() {
     }
 
 
-    public Administrador(String nombre, String usuarioAdmin, String contrasenaAdmin) {
+    public Administrador(String contrasenaAdmin,String nombre, String usuarioAdmin) {
+        this.contrasenaAdmin = contrasenaAdmin;
         this.nombre = nombre;
         this.usuarioAdmin = usuarioAdmin;
-        this.contrasenaAdmin = contrasenaAdmin;
-        //this.cohortes = cohortes;
+
+
     }
 
     public Long getId() {
@@ -51,8 +55,16 @@ public class Administrador {
         return contrasenaAdmin;
     }
 
+
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void setContrasenaAdmin(String contrasenaAdmin) {
+        this.contrasenaAdmin = contrasenaAdmin;
+    }
 }
+
+
 
