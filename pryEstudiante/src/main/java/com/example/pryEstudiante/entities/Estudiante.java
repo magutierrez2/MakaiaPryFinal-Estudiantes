@@ -23,6 +23,7 @@ public class Estudiante {
 
     @Column(length = 100)
     private String contrasena;
+
     @ManyToOne (optional = false)
     private Cohorte cohorte;
     @ManyToOne (optional = false)

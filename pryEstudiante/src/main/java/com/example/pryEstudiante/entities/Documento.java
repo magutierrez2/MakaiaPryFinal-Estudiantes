@@ -29,10 +29,8 @@ public class Documento {
     @ManyToOne(optional =false)
     Administrador administrador;
 
-
     public Documento() {
     }
-
     public Documento(String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Aspirante aspirante) {
         this.nombre = nombre;
         this.tipoContenido = tipoContenido;
@@ -40,7 +38,6 @@ public class Documento {
         this.fechaActualizacion = fechaActualizacion;
         this.aspirante = aspirante;
     }
-
     public Long getId() {
         return id;
     }

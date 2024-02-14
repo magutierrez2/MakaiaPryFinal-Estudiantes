@@ -31,9 +31,6 @@ public class Aspirante {
     @OneToMany (mappedBy = "aspirante", cascade = CascadeType.ALL)
     List<Estudiante> estudiante;
 
-
-
-
     public Aspirante() {
     }
 
