@@ -1,9 +1,12 @@
 package com.example.pryEstudiante.services;
 
 import com.example.pryEstudiante.dtos.DocumentoDTO;
+import com.example.pryEstudiante.entities.Administrador;
 import com.example.pryEstudiante.entities.Aspirante;
 import com.example.pryEstudiante.entities.Documento;
+import com.example.pryEstudiante.exceptions.AdministradorException;
 import com.example.pryEstudiante.exceptions.DocumentoException;
+import com.example.pryEstudiante.repositories.AdministradorRepository;
 import com.example.pryEstudiante.repositories.AspiranteRepository;
 import com.example.pryEstudiante.repositories.DocumentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +22,23 @@ public class DocumentoService {
 
     DocumentoRepository docRepository;
     AspiranteRepository aspRepository;
+    AdministradorRepository admRepository;
 
     @Autowired
-    public DocumentoService(DocumentoRepository docRepository, AspiranteRepository aspRepository){
+    public DocumentoService(DocumentoRepository docRepository, AspiranteRepository aspRepository, AdministradorRepository admRepository){
         this.docRepository=docRepository;
         this.aspRepository=aspRepository;
+        this.admRepository=admRepository;
     }
     public Documento crearDocumento(DocumentoDTO dto){
-        Aspirante aspExiste = this.aspRepository.findById(dto.getAspiranteId())
+        Aspirante aspExiste = this.aspRepository.findById(dto.getAspirante_id())
                 .orElseThrow(() -> new DocumentoException("No existe el aspirante"));
-        Documento nuevoDoc = new Documento(dto.getNombre(), dto.getTipoContenido(), dto.getFechaCreacion(),dto.getFechaActualizacion(), aspExiste);
+
+        Administrador admExiste = admRepository.findById(dto.getAdministrador_id())
+                .orElseThrow(() -> new DocumentoException("No existe el aspirante"));
+
+        Documento nuevoDoc = new Documento(dto.getCedula(),dto.getActa(), dto.getEstado(),
+                dto.getNombre_aspirante(), aspExiste,admExiste);
         nuevoDoc = this.docRepository.save(nuevoDoc);
         return nuevoDoc;
     }

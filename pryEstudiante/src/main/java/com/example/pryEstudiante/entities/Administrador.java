@@ -1,6 +1,7 @@
 package com.example.pryEstudiante.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -23,6 +24,7 @@ public class Administrador {
 
     @Column(length = 50)
     private String contrasenaAdmin;
+
     @OneToMany(mappedBy = "administrador")
     List<Documento> documentos;
 
