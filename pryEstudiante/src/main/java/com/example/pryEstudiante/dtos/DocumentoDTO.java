@@ -12,8 +12,7 @@ public class DocumentoDTO {
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(Long id, String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Long aspiranteId) {
-        this.id = id;
+    public DocumentoDTO( String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Long aspiranteId) {
         this.nombre = nombre;
         this.tipoContenido = tipoContenido;
         this.fechaCreacion = fechaCreacion;

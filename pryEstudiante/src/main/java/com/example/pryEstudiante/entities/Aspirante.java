@@ -34,15 +34,13 @@ public class Aspirante {
     public Aspirante() {
     }
 
-    public Aspirante(Long id, String nombre, String apellido, String correo, String direccion, String telefono, List<Documento> documentosRecibidos, Administrador administradorEnvio) {
-        this.id = id;
+    public Aspirante(String nombre, String apellido, String correo, String direccion, String telefono) {
+
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.documentosRecibidos = documentosRecibidos;
-
     }
 
     public Long getId() {
@@ -100,6 +98,5 @@ public class Aspirante {
     public void setDocumentosRecibidos(List<Documento> documentosRecibidos) {
         this.documentosRecibidos = documentosRecibidos;
     }
-
 
 }

@@ -11,17 +11,20 @@ import java.util.Optional;
 @RestController
 @RequestMapping("api/v1/documento")
 public class DocumentoController{
+    @Autowired
     private DocumentoService docService;
 
-  /*  @Autowired
+    @Autowired
     public DocumentoController(DocumentoService docService){
         this.docService = docService;
     }
 
     @PostMapping()
-    public Documento crear(@RequestBody DocumentoDTO dto){
-        return this.docService.crear(dto);
+    public Documento crearDoc(@RequestBody DocumentoDTO dto){
+
+        return this.docService.crearDocumento(dto);
     }
+    /*
     @GetMapping()
     public List<Documento> listar(){
         return this.docService.listar();
