@@ -25,18 +25,18 @@ public class Documento {
     @Column(name = "fecha_actualizacion")
     private Date fechaActualizacion;
     @ManyToOne(optional = false)
-    Aspirante aspirante;
+    Aspirante aspirante_id;
     @ManyToOne(optional =false)
     Administrador administrador;
 
-    public Documento() {
+    public Documento(String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Date actualizacion, Aspirante aspiranteExiste) {
     }
-    public Documento(String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Aspirante aspirante) {
+    public Documento(String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Aspirante aspirante_id) {
         this.nombre = nombre;
         this.tipoContenido = tipoContenido;
         this.fechaCreacion = fechaCreacion;
         this.fechaActualizacion = fechaActualizacion;
-        this.aspirante = aspirante;
+        this.aspirante_id=aspirante_id;
     }
     public Long getId() {
         return id;
@@ -58,9 +58,6 @@ public class Documento {
         return fechaActualizacion;
     }
 
-    public Aspirante getAspirante() {
-        return aspirante;
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -78,7 +75,11 @@ public class Documento {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public void setAspirante(Aspirante aspirante) {
-        this.aspirante = aspirante;
+    public Aspirante getAspirante_id() {
+        return aspirante_id;
+    }
+
+    public void setAspirante_id(Aspirante aspirante_id) {
+        this.aspirante_id = aspirante_id;
     }
 }
