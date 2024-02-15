@@ -4,21 +4,24 @@ import java.util.Date;
 
 public class DocumentoDTO {
     private Long id;
-    private String nombre;
-    private String tipoContenido;
-    private Date fechaCreacion;
-    private Date fechaActualizacion;
-    private Long aspiranteId;
+    private String cedula;
+
+    private String acta;
+    private Boolean estado;
+    private String nombre_aspirante;
+    private Long aspirante_id;
+    private Long administrador_id;
+
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(Long id, String nombre, String tipoContenido, Date fechaCreacion, Date fechaActualizacion, Long aspiranteId) {
-        this.id = id;
-        this.nombre = nombre;
-        this.tipoContenido = tipoContenido;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
-        this.aspiranteId = aspiranteId;
+    public DocumentoDTO(String cedula, String acta, Boolean estado, String nombre_aspirante, Long aspirante_id, Long administrador_id) {
+        this.cedula = cedula;
+        this.acta = acta;
+        this.estado = estado;
+        this.nombre_aspirante = nombre_aspirante;
+        this.aspirante_id = aspirante_id;
+        this.administrador_id = administrador_id;
     }
 
     public Long getId() {
@@ -29,43 +32,51 @@ public class DocumentoDTO {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getCedula() {
+        return cedula;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
-    public String getTipoContenido() {
-        return tipoContenido;
+    public String getActa() {
+        return acta;
     }
 
-    public void setTipoContenido(String tipoContenido) {
-        this.tipoContenido = tipoContenido;
+    public void setActa(String acta) {
+        this.acta = acta;
     }
 
-    public Date getFechaCreacion() {
-        return fechaCreacion;
+    public Boolean getEstado() {
+        return estado;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
-    public Date getFechaActualizacion() {
-        return fechaActualizacion;
+    public String getNombre_aspirante() {
+        return nombre_aspirante;
     }
 
-    public void setFechaActualizacion(Date fechaActualizacion) {
-        this.fechaActualizacion = fechaActualizacion;
+    public void setNombre_aspirante(String nombre_aspirante) {
+        this.nombre_aspirante = nombre_aspirante;
     }
 
-    public Long getAspiranteId() {
-        return aspiranteId;
+    public Long getAspirante_id() {
+        return aspirante_id;
     }
 
-    public void setAspiranteId(Long aspiranteId) {
-        this.aspiranteId = aspiranteId;
+    public void setAspirante_id(Long aspirante_id) {
+        this.aspirante_id = aspirante_id;
+    }
+
+    public Long getAdministrador_id() {
+        return administrador_id;
+    }
+
+    public void setAdministrador_id(Long administrador_id) {
+        this.administrador_id = administrador_id;
     }
 }

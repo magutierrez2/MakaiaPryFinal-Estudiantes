@@ -26,7 +26,18 @@ public class EstudianteService {
         this.aspRepository=aspRepository;
 
     }
-    public Estudiante crear(EstudianteDTO dto){
+
+    ////public Estudiante crear(EstudianteDTO dto) {
+    //    Optional<Aspirante> aspirante = this.aspRepository.findById(dto.getId());
+    //
+    //    if (aspirante.isEmpty()) {
+    //        throw new EstudianteException("El aspirante no exixte", HttpStatusCode.valueOf(400));
+    //    }
+    //
+    //    Estudiante nuevoEstudiante = new Estudiante(dto.getUsuario(), dto.getContrasena());
+    //    return this.estRepository.save(nuevoEstudiante);
+    //}
+   /* public Estudiante crear(EstudianteDTO dto){
         Aspirante aspirante = this.aspRepository
                 .findById(dto.getId())
                 .orElseThrow(()-> new EstudianteException("El aspirante no exixte", HttpStatusCode.valueOf(400)));
@@ -54,4 +65,6 @@ public class EstudianteService {
 
         return this.estRepository.save(estExiste);
     }
+
+    */
 }

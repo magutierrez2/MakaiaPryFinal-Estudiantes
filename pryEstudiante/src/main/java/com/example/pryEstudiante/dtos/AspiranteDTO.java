@@ -1,5 +1,6 @@
 package com.example.pryEstudiante.dtos;
 
+import java.util.Date;
 import java.util.List;
 
 public class AspiranteDTO {
@@ -9,19 +10,21 @@ public class AspiranteDTO {
     private String correo;
     private String direccion;
     private String telefono;
+    private Date fechaInscripcion;
     private List<DocumentoDTO> documentosRecibidos;
     private AdministradorDTO administradorEnvio;
 
     public AspiranteDTO() {
     }
 
-    public AspiranteDTO(Long id, String nombre, String apellido, String correo, String direccion, String telefono, List<DocumentoDTO> documentosRecibidos, AdministradorDTO administradorEnvio) {
+    public AspiranteDTO(Long id, String nombre, String apellido, String correo, String direccion, String telefono, Date fechaInscripcion,List<DocumentoDTO> documentosRecibidos, AdministradorDTO administradorEnvio) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.fechaInscripcion = fechaInscripcion;
         this.documentosRecibidos = documentosRecibidos;
         this.administradorEnvio = administradorEnvio;
     }
@@ -88,5 +91,13 @@ public class AspiranteDTO {
 
     public void setAdministradorEnvio(AdministradorDTO administradorEnvio) {
         this.administradorEnvio = administradorEnvio;
+    }
+
+    public Date getFechaInscripcion() {
+        return fechaInscripcion;
+    }
+
+    public void setFechaInscripcion(Date fechaInscripcion) {
+        this.fechaInscripcion = fechaInscripcion;
     }
 }
