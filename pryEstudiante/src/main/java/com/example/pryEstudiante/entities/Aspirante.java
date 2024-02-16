@@ -2,40 +2,38 @@ package com.example.pryEstudiante.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "aspirante")
+@Table(name = "Aspirante")
 public class Aspirante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long aspi_id;
+    @Column(length = 50, unique = true)
+    private String cedula;
     @Column(length = 50)
     private String nombre;
 
     @Column(length = 50)
     private String apellido;
 
-    @Column(length = 100, unique = true)
+    @Column(length = 100)
     private String correo;
-
     @Column(length = 100)
     private String direccion;
-
-    @Column(length = 15)
+    @Column(length = 20)
     private String telefono;
-
     @OneToMany(mappedBy = "aspirante", cascade = CascadeType.ALL)
-    private List<Documento> documentosRecibidos;
-    @OneToMany (mappedBy = "aspirante", cascade = CascadeType.ALL)
-    List<Estudiante> estudiante;
+    private List<Documento> documentos = new ArrayList<>();
+
 
     public Aspirante() {
     }
 
-    public Aspirante(String nombre, String apellido, String correo, String direccion, String telefono) {
-
+    public Aspirante(String cedula, String nombre, String apellido, String correo, String direccion, String telefono) {
+        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
@@ -43,12 +41,20 @@ public class Aspirante {
         this.telefono = telefono;
     }
 
-    public Long getId() {
-        return id;
+    public Long getAspi_id() {
+        return aspi_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAspi_id(Long aspi_id) {
+        this.aspi_id = aspi_id;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -91,12 +97,16 @@ public class Aspirante {
         this.telefono = telefono;
     }
 
-    public List<Documento> getDocumentosRecibidos() {
-        return documentosRecibidos;
+    public List<Documento> getDocumentos() {
+        return documentos;
     }
 
-    public void setDocumentosRecibidos(List<Documento> documentosRecibidos) {
-        this.documentosRecibidos = documentosRecibidos;
+    public void setDocumentos(List<Documento> documentos) {
+        this.documentos = documentos;
+        for (Documento documento: documentos){
+            documento.setAspirante(this);
+        }
     }
+
 
 }

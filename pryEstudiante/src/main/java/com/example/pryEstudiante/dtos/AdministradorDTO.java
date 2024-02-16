@@ -1,29 +1,26 @@
 package com.example.pryEstudiante.dtos;
 
-import java.util.List;
-
 public class AdministradorDTO {
-    private Long id;
+    private Long id_admin;
     private String nombre;
-    private String usuarioAdmin;
-    private String contrasenaAdmin;
+    private String usuario_admin;
+    private String contrasena_admin;
 
     public AdministradorDTO() {
     }
 
-
-    public AdministradorDTO(String nombre, String usuarioAdmin, String contrasenaAdmin) {
+    public AdministradorDTO(String nombre, String usuario_admin, String contrasena_admin) {
         this.nombre = nombre;
-        this.usuarioAdmin = usuarioAdmin;
-        this.contrasenaAdmin = contrasenaAdmin;
+        this.usuario_admin = usuario_admin;
+        this.contrasena_admin = contrasena_admin;
     }
 
-    public Long getId() {
-        return id;
+    public Long getId_admin() {
+        return id_admin;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_admin(Long id_admin) {
+        this.id_admin = id_admin;
     }
 
     public String getNombre() {
@@ -34,21 +31,19 @@ public class AdministradorDTO {
         this.nombre = nombre;
     }
 
-    public String getUsuarioAdmin() {
-        return usuarioAdmin;
+    public String getUsuario_admin() {
+        return usuario_admin;
     }
 
-    public void setUsuarioAdmin(String usuarioAdmin) {
-        this.usuarioAdmin = usuarioAdmin;
+    public void setUsuario_admin(String usuario_admin) {
+        this.usuario_admin = usuario_admin;
     }
 
-    public String getContrasenaAdmin() {
-        return contrasenaAdmin;
+    public String getContrasena_admin() {
+        return contrasena_admin;
     }
 
-    public void setContrasenaAdmin(String contrasenaAdmin) {
-        this.contrasenaAdmin = contrasenaAdmin;
+    public void setContrasena_admin(String contrasena_admin) {
+        this.contrasena_admin = contrasena_admin;
     }
-
-
 }

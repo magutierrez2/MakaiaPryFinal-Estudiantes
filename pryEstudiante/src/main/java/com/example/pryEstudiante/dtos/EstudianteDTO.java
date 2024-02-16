@@ -1,60 +1,64 @@
 package com.example.pryEstudiante.dtos;
 
 public class EstudianteDTO {
-    private Long id;
-    private String nombre;
-    private String usuario;
-    private String contrasena;
-    private CohorteDTO cohorte;
+    private Long estudiante_id;
+    private String usuario_estudiante;
+    private String contrasena_estudiante;
+    private CohorteDTO objCohorte;
+    private AspiranteDTO objAspirante;
 
     public EstudianteDTO() {
     }
 
-    public EstudianteDTO(Long id, String nombre, String usuario, String contrasena, CohorteDTO cohorte) {
-        this.id = id;
-        this.nombre = nombre;
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-        this.cohorte = cohorte;
+    public EstudianteDTO(String usuario_estudiante, String contrasena_estudiante) {
+        this.usuario_estudiante = usuario_estudiante;
+        this.contrasena_estudiante = contrasena_estudiante;
     }
 
-    public Long getId() {
-        return id;
+    public EstudianteDTO(String usuario_estudiante, String contrasena_estudiante, CohorteDTO objCohorte, AspiranteDTO objAspirante) {
+        this.usuario_estudiante = usuario_estudiante;
+        this.contrasena_estudiante = contrasena_estudiante;
+        this.objCohorte = objCohorte;
+        this.objAspirante = objAspirante;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Long getEstudiante_id() {
+        return estudiante_id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public void setEstudiante_id(Long estudiante_id) {
+        this.estudiante_id = estudiante_id;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getUsuario_estudiante() {
+        return usuario_estudiante;
     }
 
-    public CohorteDTO getCohorte() {
-        return cohorte;
+    public void setUsuario_estudiante(String usuario_estudiante) {
+        this.usuario_estudiante = usuario_estudiante;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getContrasena_estudiante() {
+        return contrasena_estudiante;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setContrasena_estudiante(String contrasena_estudiante) {
+        this.contrasena_estudiante = contrasena_estudiante;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public CohorteDTO getObjCohorte() {
+        return objCohorte;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public AspiranteDTO getObjAspirante() {
+        return objAspirante;
     }
 
-    public void setCohorte(CohorteDTO cohorte) {
-        this.cohorte = cohorte;
+    public void setObjAspirante(AspiranteDTO objAspirante) {
+        this.objAspirante = objAspirante;
+    }
+
+    public void setObjCohorte(CohorteDTO objCohorte) {
+        this.objCohorte = objCohorte;
     }
 }
