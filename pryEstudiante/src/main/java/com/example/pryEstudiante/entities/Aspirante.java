@@ -2,6 +2,7 @@ package com.example.pryEstudiante.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,22 +28,30 @@ public class Aspirante {
     private String telefono;
 
     @OneToMany(mappedBy = "aspirante", cascade = CascadeType.ALL)
-    private List<Documento> documentosRecibidos;
+    private List<Documento> documentos;
     @OneToMany (mappedBy = "aspirante", cascade = CascadeType.ALL)
     List<Estudiante> estudiante;
 
     public Aspirante() {
     }
 
-    public Aspirante(String nombre, String apellido, String correo, String direccion, String telefono) {
+    public Aspirante(String nombre, String apellido, String correo, String direccion, String telefono ){
 
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.documentos= new ArrayList<>();
     }
 
+    // Método para agregar un documento al aspirante
+    public void agregarDocumento(Documento documento) {
+        documentos.add(documento);
+        documento.setAspirante(this);
+    }
+
+    // Getters y setters
     public Long getId() {
         return id;
     }
@@ -91,12 +100,19 @@ public class Aspirante {
         this.telefono = telefono;
     }
 
-    public List<Documento> getDocumentosRecibidos() {
-        return documentosRecibidos;
+    public List<Documento> getDocumentos() {
+        return documentos;
     }
 
-    public void setDocumentosRecibidos(List<Documento> documentosRecibidos) {
-        this.documentosRecibidos = documentosRecibidos;
+    public void setDocumentos(List<Documento> documentos) {
+        this.documentos = documentos;
     }
 
+    public List<Estudiante> getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(List<Estudiante> estudiante) {
+        this.estudiante = estudiante;
+    }
 }

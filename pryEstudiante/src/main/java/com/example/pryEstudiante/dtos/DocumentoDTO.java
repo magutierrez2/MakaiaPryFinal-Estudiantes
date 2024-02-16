@@ -1,28 +1,49 @@
 package com.example.pryEstudiante.dtos;
 
+import com.example.pryEstudiante.entities.Administrador;
+import com.example.pryEstudiante.entities.Aspirante;
+import jakarta.persistence.ManyToOne;
+
 import java.util.Date;
 
 public class DocumentoDTO {
     private Long id;
-    private String cedula;
+    private String tipo;
 
-    private String acta;
+    private String contenido;
     private Boolean estado;
-    private String nombre_aspirante;
-    private Long aspirante_id;
-    private Long administrador_id;
+    Aspirante aspirante;
+
+    Administrador administrador;
 
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(String cedula, String acta, Boolean estado, String nombre_aspirante, Long aspirante_id, Long administrador_id) {
-        this.cedula = cedula;
-        this.acta = acta;
+    public DocumentoDTO(String tipo, String contenido, Boolean estado) {
+        this.tipo = tipo;
+        this.contenido = contenido;
         this.estado = estado;
-        this.nombre_aspirante = nombre_aspirante;
-        this.aspirante_id = aspirante_id;
-        this.administrador_id = administrador_id;
+
     }
+    // Getter y setter para aspirante
+    public Aspirante getAspirante() {
+        return aspirante;
+    }
+
+    public void setAspirante(Aspirante aspirante) {
+        this.aspirante = aspirante;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    // Getters y setters
+
 
     public Long getId() {
         return id;
@@ -32,20 +53,20 @@ public class DocumentoDTO {
         this.id = id;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public String getActa() {
-        return acta;
+    public String getContenido() {
+        return contenido;
     }
 
-    public void setActa(String acta) {
-        this.acta = acta;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 
     public Boolean getEstado() {
@@ -56,27 +77,4 @@ public class DocumentoDTO {
         this.estado = estado;
     }
 
-    public String getNombre_aspirante() {
-        return nombre_aspirante;
-    }
-
-    public void setNombre_aspirante(String nombre_aspirante) {
-        this.nombre_aspirante = nombre_aspirante;
-    }
-
-    public Long getAspirante_id() {
-        return aspirante_id;
-    }
-
-    public void setAspirante_id(Long aspirante_id) {
-        this.aspirante_id = aspirante_id;
-    }
-
-    public Long getAdministrador_id() {
-        return administrador_id;
-    }
-
-    public void setAdministrador_id(Long administrador_id) {
-        this.administrador_id = administrador_id;
-    }
 }

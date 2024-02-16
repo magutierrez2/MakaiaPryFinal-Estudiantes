@@ -15,15 +15,13 @@ public class Documento {
     private Long id;
 
     @Column(length = 50)
-    private String cedula;
+    private String tipo;
 
     @Column(length = 50)
-    private String acta;
+    private String contenido;
 
     @Column(length = 50)
     private Boolean estado;
-    @Column(length = 50)
-    private String nombre_aspirante;
 
     @ManyToOne(optional = false)
     Aspirante aspirante;
@@ -32,15 +30,23 @@ public class Documento {
 
     public Documento() {
     }
-    public Documento(String cedula, String acta, Boolean estado, String nombre_aspirante, Aspirante aspirante_id, Administrador administradot_id) {
-        this.cedula = cedula;
-        this.acta = acta;
+    public Documento(String tipo, String contenido, Boolean estado,Aspirante aspirante, Administrador administrador) {
+        this.tipo = tipo;
+        this.contenido = contenido;
         this.estado = estado;
-        this.nombre_aspirante = nombre_aspirante;
-        this.aspirante = aspirante_id;
-        this.administrador = administradot_id;
 
     }
+
+    // Getter y setter para aspirante
+    public Aspirante getAspirante() {
+        return aspirante;
+    }
+
+    public void setAspirante(Aspirante aspirante) {
+        this.aspirante = aspirante;
+    }
+
+    // Getters y setters
 
     public Long getId() {
         return id;
@@ -50,20 +56,20 @@ public class Documento {
         this.id = id;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public String getActa() {
-        return acta;
+    public String getContenido() {
+        return contenido;
     }
 
-    public void setActa(String acta) {
-        this.acta = acta;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 
     public Boolean getEstado() {
@@ -74,23 +80,11 @@ public class Documento {
         this.estado = estado;
     }
 
-    public String getNombre_aspirante() {
-        return nombre_aspirante;
-    }
-
-    public void setNombre_aspirante(String nombre_aspirante) {
-        this.nombre_aspirante = nombre_aspirante;
-    }
-
-    public Aspirante getAspirante() {
-        return aspirante;
-    }
-
-    public void setAspirante(Aspirante aspirante) {
-        this.aspirante = aspirante;
-    }
-
     public Administrador getAdministrador() {
         return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 }

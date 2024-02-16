@@ -31,14 +31,13 @@ public class DocumentoService {
         this.admRepository=admRepository;
     }
     public Documento crearDocumento(DocumentoDTO dto){
-        Aspirante aspExiste = this.aspRepository.findById(dto.getAspirante_id())
+        Aspirante aspExiste = this.aspRepository.findById(dto.getAspirante().getId())
                 .orElseThrow(() -> new DocumentoException("No existe el aspirante"));
 
-        Administrador admExiste = admRepository.findById(dto.getAdministrador_id())
-                .orElseThrow(() -> new DocumentoException("No existe el aspirante"));
+        Administrador admExiste = admRepository.findById(dto.getAdministrador().getId())
+                .orElseThrow(() -> new DocumentoException("No existe el administrador"));
 
-        Documento nuevoDoc = new Documento(dto.getCedula(),dto.getActa(), dto.getEstado(),
-                dto.getNombre_aspirante(), aspExiste,admExiste);
+        Documento nuevoDoc = new Documento(dto.getTipo(),dto.getContenido(), dto.getEstado(), aspExiste,admExiste);
         nuevoDoc = this.docRepository.save(nuevoDoc);
         return nuevoDoc;
     }

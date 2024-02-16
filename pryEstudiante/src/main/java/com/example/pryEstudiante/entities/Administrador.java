@@ -26,7 +26,7 @@ public class Administrador {
     private String contrasenaAdmin;
 
     @OneToMany(mappedBy = "administrador")
-    List<Documento> documentos;
+    List<Documento> documentosRecibidos;
 
 
     public Administrador() {
@@ -41,31 +41,45 @@ public class Administrador {
 
     }
 
-    public Long getId() {
-        return id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getNombre() {
-        return nombre;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public String getUsuarioAdmin() {
-        return usuarioAdmin;
-    }
+  public String getNombre() {
+    return nombre;
+  }
 
-    public String getContrasenaAdmin() {
-        return contrasenaAdmin;
-    }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
+  public String getUsuarioAdmin() {
+    return usuarioAdmin;
+  }
 
+  public void setUsuarioAdmin(String usuarioAdmin) {
+    this.usuarioAdmin = usuarioAdmin;
+  }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+  public String getContrasenaAdmin() {
+    return contrasenaAdmin;
+  }
 
-    public void setContrasenaAdmin(String contrasenaAdmin) {
-        this.contrasenaAdmin = contrasenaAdmin;
-    }
+  public void setContrasenaAdmin(String contrasenaAdmin) {
+    this.contrasenaAdmin = contrasenaAdmin;
+  }
+
+  public List<Documento> getDocumentosRecibidos() {
+    return documentosRecibidos;
+  }
+
+  public void setDocumentosRecibidos(List<Documento> documentosRecibidos) {
+    this.documentosRecibidos = documentosRecibidos;
+  }
 }
 
 
