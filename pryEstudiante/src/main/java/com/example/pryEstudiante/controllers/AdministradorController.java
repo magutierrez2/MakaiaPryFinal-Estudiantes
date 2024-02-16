@@ -7,35 +7,30 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("api/v1/administrador")
-public class AdministradorController{
-
+public class AdministradorController {
     @Autowired
-    private AdministradorService admService;
+    private AdministradorService adminService;
 
     @PostMapping
-    public  Administrador crearAdmin (@RequestBody AdministradorDTO dto){
-        return this.admService.crearAdministrador(dto);
+    public Administrador crearAdmin(@RequestBody AdministradorDTO dto){
+        return this.adminService.crearAdministrador(dto);
     }
-
+    @GetMapping("/{admin_id}")
+    public Administrador buscarAdminId(@PathVariable("admin_id") Long id){
+        return this.adminService.buscarPorId(id);
+    }
     @GetMapping
-    public List<Administrador> listarAdmin (){
-        return this.admService.listarAdministrador();
+    public List<Administrador> listarAdmin(){
+        return this.adminService.listarAdministrador();
     }
-    @GetMapping("/{adminId}")
-    public Administrador buscarIdadmin (@PathVariable("adminId") Long id){
-        return this.admService.buscarId(id);
+    @PutMapping("/{admin_id}/actualizar")
+    public Administrador actualizarAdmin(@PathVariable("admin_id") Long id, @RequestBody AdministradorDTO dto){
+        return this.adminService.actualizarAdministrador(id,dto);
     }
-
-    @PutMapping("/{adminId}/actualizar")
-    public Administrador actualizarAdmin (@PathVariable("adminId") Long id, @RequestBody AdministradorDTO dto){
-        return this.admService.actualizarAdministrador(id,dto);
-    }
-
-    @DeleteMapping("/{adminId}/eliminar")
-    public void eliminarAdmin (@PathVariable("adminId") Long id){
-        this.admService.eliminarAdministrador(id);
+    @DeleteMapping("{admin_id}/eliminar")
+    public void eliminarAdmin(@PathVariable("admin_id") Long id){
+        this.adminService.eliminarAdministrador(id);
     }
 }

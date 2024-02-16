@@ -1,39 +1,29 @@
 package com.example.pryEstudiante.dtos;
 
-import com.example.pryEstudiante.entities.Cohorte;
-import com.example.pryEstudiante.entities.Estudiante;
-import org.springframework.util.CollectionUtils;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class CohorteDTO {
-    private Long id;
+    private Long id_cohorte;
     private String nombre;
-    private Date fechaInicio;
-    private Long administrador_id;
-    private Long estudiante_id;
+    private Date fecha_inicio;
+    private List<EstudianteDTO> listEstudiante = new ArrayList<>();
 
     public CohorteDTO() {
     }
 
-    public CohorteDTO(Long id, String nombre, Date fechaInicio, Long administrador_id, Long estudiante_id) {
-        this.id = id;
+    public CohorteDTO(String nombre, Date fecha_inicio) {
         this.nombre = nombre;
-        this.fechaInicio = fechaInicio;
-        this.administrador_id = administrador_id;
-        this.estudiante_id = estudiante_id;
+        this.fecha_inicio = fecha_inicio;
     }
 
-
-
-    public Long getId() {
-        return id;
+    public Long getId_cohorte() {
+        return id_cohorte;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_cohorte(Long id_cohorte) {
+        this.id_cohorte = id_cohorte;
     }
 
     public String getNombre() {
@@ -44,27 +34,19 @@ public class CohorteDTO {
         this.nombre = nombre;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public Date getFecha_inicio() {
+        return fecha_inicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setFecha_inicio(Date fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
     }
 
-    public Long getAdministrador_id() {
-        return administrador_id;
+    public List<EstudianteDTO> getListEstudiante() {
+        return listEstudiante;
     }
 
-    public void setAdministrador_id(Long administrador_id) {
-        this.administrador_id = administrador_id;
-    }
-
-    public Long getEstudiante_id() {
-        return estudiante_id;
-    }
-
-    public void setEstudiante_id(Long estudiante_id) {
-        this.estudiante_id = estudiante_id;
+    public void setListEstudiante(List<EstudianteDTO> listEstudiante) {
+        this.listEstudiante = listEstudiante;
     }
 }

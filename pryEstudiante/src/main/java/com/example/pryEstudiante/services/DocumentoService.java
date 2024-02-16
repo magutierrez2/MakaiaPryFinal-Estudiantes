@@ -1,73 +1,44 @@
 package com.example.pryEstudiante.services;
 
 import com.example.pryEstudiante.dtos.DocumentoDTO;
-import com.example.pryEstudiante.entities.Administrador;
 import com.example.pryEstudiante.entities.Aspirante;
 import com.example.pryEstudiante.entities.Documento;
-import com.example.pryEstudiante.exceptions.AdministradorException;
-import com.example.pryEstudiante.exceptions.DocumentoException;
-import com.example.pryEstudiante.repositories.AdministradorRepository;
+import com.example.pryEstudiante.exceptions.ExceptionApi;
 import com.example.pryEstudiante.repositories.AspiranteRepository;
 import com.example.pryEstudiante.repositories.DocumentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
-@Service
+@Repository
 public class DocumentoService {
-
+    @Autowired
     DocumentoRepository docRepository;
     AspiranteRepository aspRepository;
-    AdministradorRepository admRepository;
 
-    @Autowired
-    public DocumentoService(DocumentoRepository docRepository, AspiranteRepository aspRepository, AdministradorRepository admRepository){
-        this.docRepository=docRepository;
-        this.aspRepository=aspRepository;
-        this.admRepository=admRepository;
+    public DocumentoService(DocumentoRepository docRepository, AspiranteRepository aspRepository) {
+        this.aspRepository = aspRepository;
+        this.docRepository = docRepository;
     }
     public Documento crearDocumento(DocumentoDTO dto){
-        Aspirante aspExiste = this.aspRepository.findById(dto.getAspirante_id())
-                .orElseThrow(() -> new DocumentoException("No existe el aspirante"));
 
-        Administrador admExiste = admRepository.findById(dto.getAdministrador_id())
-                .orElseThrow(() -> new DocumentoException("No existe el aspirante"));
-
-        Documento nuevoDoc = new Documento(dto.getCedula(),dto.getActa(), dto.getEstado(),
-                dto.getNombre_aspirante(), aspExiste,admExiste);
-        nuevoDoc = this.docRepository.save(nuevoDoc);
-        return nuevoDoc;
+        Optional<Aspirante> aspiranteOptional = aspRepository.findById(dto.getObjAspirante().getAspi_id());
+        if (!aspiranteOptional.isPresent())
+        {
+            throw new ExceptionApi("No existe un aspirante con ese id" + aspiranteOptional.get().getAspi_id());
+        }
+        Aspirante aspirante = aspiranteOptional.get();
+        Documento documento = new Documento(dto.getNombre_documento(), dto.getContenido_documento(), dto.getEstado(), aspirante);
+        documento = this.docRepository.save(documento);
+        return documento;
     }
-    public List<Documento> listar(){
-        List<Documento> result = StreamSupport
+    public List<Documento> listarDocumento(){
+        List<Documento> resultado = StreamSupport
                 .stream(this.docRepository.findAll().spliterator(),false)
                 .toList();
-        return result;
+        return resultado;
     }
-    /*
-    public void eliminar(Long documentoId){
-        this.docRepository.deleteById(documentoId);
-    }
-    public Optional<Documento> buscar(Long documentoId){
-        return this.docRepository.findById(documentoId);
-    }
-    public Documento actualizar(Long documentoId, DocumentoDTO dto){
-        Documento docExiste = this.docRepository.findById(documentoId)
-                .orElseThrow(() -> new DocumentoException("El documento no existe"));
-        Aspirante aspExiste = this.aspRepository.findByIdAspirante(dto.getAspiranteId());
-        if (aspExiste != null){
-            throw new DocumentoException("El aspirante no exixte", HttpStatusCode.valueOf(400));
-        }
-
-        docExiste.setNombre(dto.getNombre());
-        docExiste.setTipoContenido(dto.getTipoContenido());
-        docExiste.setFechaCreacion(dto.getFechaCreacion());
-        docExiste.setFechaActualizacion(dto.getFechaActualizacion());
-        docExiste.setAspirante(aspExiste);
-        return this.docRepository.save(docExiste);
-    }*/
 }
