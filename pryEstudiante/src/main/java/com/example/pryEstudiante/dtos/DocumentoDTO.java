@@ -1,80 +1,65 @@
 package com.example.pryEstudiante.dtos;
 
-import com.example.pryEstudiante.entities.Administrador;
-import com.example.pryEstudiante.entities.Aspirante;
-import jakarta.persistence.ManyToOne;
-
-import java.util.Date;
-
 public class DocumentoDTO {
-    private Long id;
-    private String tipo;
-
-    private String contenido;
-    private Boolean estado;
-    Aspirante aspirante;
-
-    Administrador administrador;
+    private Long doc_id;
+    private String nombre_documento;
+    private String contenido_documento;
+    private EstadoDocumento estado;
+    private AspiranteDTO objAspirante;
 
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(String tipo, String contenido, Boolean estado) {
-        this.tipo = tipo;
-        this.contenido = contenido;
+    public DocumentoDTO(String nombre_documento,String contenido_documento, EstadoDocumento estado) {
+        this.nombre_documento = nombre_documento;
+        this.contenido_documento = contenido_documento;
         this.estado = estado;
-
-    }
-    // Getter y setter para aspirante
-    public Aspirante getAspirante() {
-        return aspirante;
     }
 
-    public void setAspirante(Aspirante aspirante) {
-        this.aspirante = aspirante;
+    public DocumentoDTO(String nombre_documento, String contenido_documento, EstadoDocumento estado, AspiranteDTO objAspirante) {
+        this.nombre_documento = nombre_documento;
+        this.contenido_documento = contenido_documento;
+        this.estado = estado;
+        this.objAspirante = objAspirante;
     }
 
-    public Administrador getAdministrador() {
-        return administrador;
+    public Long getDoc_id() {
+        return doc_id;
     }
 
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
+    public void setDoc_id(Long doc_id) {
+        this.doc_id = doc_id;
     }
 
-    // Getters y setters
-
-
-    public Long getId() {
-        return id;
+    public String getNombre_documento() {
+        return nombre_documento;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setNombre_documento(String nombre_documento) {
+        this.nombre_documento = nombre_documento;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getContenido_documento() {
+        return contenido_documento;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setContenido_documento(String contenido_documento) {
+        this.contenido_documento = contenido_documento;
     }
 
-    public String getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
-    }
-
-    public Boolean getEstado() {
+    public EstadoDocumento getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(EstadoDocumento estado) {
         this.estado = estado;
     }
 
+    public AspiranteDTO getObjAspirante() {
+        return objAspirante;
+    }
+
+    public void setObjAspirante(AspiranteDTO objAspirante) {
+        this.objAspirante = objAspirante;
+    }
 }

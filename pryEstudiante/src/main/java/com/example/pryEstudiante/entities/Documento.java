@@ -1,90 +1,81 @@
 package com.example.pryEstudiante.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.example.pryEstudiante.dtos.EstadoDocumento;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "Documento")
 public class Documento {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long doc_id;
     @Column(length = 50)
-    private String tipo;
+    private String nombre_documento;
+    @Column(length = 255)
+    private String contenido_documento;
+    @Column()
+    @Enumerated(EnumType.STRING)
+    private EstadoDocumento estado;
 
-    @Column(length = 50)
-    private String contenido;
-
-    @Column(length = 50)
-    private Boolean estado;
-
-    @ManyToOne(optional = false)
-    Aspirante aspirante;
-    @ManyToOne(optional =false)
-    Administrador administrador;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "aspi_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Aspirante aspirante;
 
     public Documento() {
     }
-    public Documento(String tipo, String contenido, Boolean estado,Aspirante aspirante, Administrador administrador) {
-        this.tipo = tipo;
-        this.contenido = contenido;
-        this.estado = estado;
 
+    public Documento(String nombre_documento, String contenido_documento, EstadoDocumento estado) {
+        this.nombre_documento = nombre_documento;
+        this.contenido_documento = contenido_documento;
+        this.estado = estado;
     }
 
-    // Getter y setter para aspirante
+    public Documento(String nombre_documento, String contenido_documento, EstadoDocumento estado, Aspirante aspirante) {
+        this.nombre_documento = nombre_documento;
+        this.contenido_documento = contenido_documento;
+        this.estado = estado;
+        this.aspirante = aspirante;
+    }
+
+    public Long getDoc_id() {
+        return doc_id;
+    }
+
+    public void setDoc_id(Long doc_id) {
+        this.doc_id = doc_id;
+    }
+
+    public String getNombre_documento() {
+        return nombre_documento;
+    }
+
+    public void setNombre_documento(String nombre_documento) {
+        this.nombre_documento = nombre_documento;
+    }
+
+    public String getContenido_documento() {
+        return contenido_documento;
+    }
+
+    public void setContenido_documento(String contenido_documento) {
+        this.contenido_documento = contenido_documento;
+    }
+
+    public EstadoDocumento getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoDocumento estado) {
+        this.estado = estado;
+    }
+
     public Aspirante getAspirante() {
         return aspirante;
     }
 
     public void setAspirante(Aspirante aspirante) {
         this.aspirante = aspirante;
-    }
-
-    // Getters y setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-
-    public Administrador getAdministrador() {
-        return administrador;
-    }
-
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
     }
 }

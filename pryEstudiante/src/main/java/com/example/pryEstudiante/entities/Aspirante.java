@@ -6,58 +6,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "aspirante")
+@Table(name = "Aspirante")
 public class Aspirante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long aspi_id;
+    @Column(length = 50, unique = true)
+    private String cedula;
     @Column(length = 50)
     private String nombre;
 
     @Column(length = 50)
     private String apellido;
 
-    @Column(length = 100, unique = true)
+    @Column(length = 100)
     private String correo;
-
     @Column(length = 100)
     private String direccion;
-
-    @Column(length = 15)
+    @Column(length = 20)
     private String telefono;
-
     @OneToMany(mappedBy = "aspirante", cascade = CascadeType.ALL)
-    private List<Documento> documentos;
-    @OneToMany (mappedBy = "aspirante", cascade = CascadeType.ALL)
-    List<Estudiante> estudiante;
+    private List<Documento> documentos = new ArrayList<>();
+
 
     public Aspirante() {
     }
 
-    public Aspirante(String nombre, String apellido, String correo, String direccion, String telefono ){
-
+    public Aspirante(String cedula, String nombre, String apellido, String correo, String direccion, String telefono) {
+        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.documentos= new ArrayList<>();
     }
 
-    // Método para agregar un documento al aspirante
-    public void agregarDocumento(Documento documento) {
-        documentos.add(documento);
-        documento.setAspirante(this);
+    public Long getAspi_id() {
+        return aspi_id;
     }
 
-    // Getters y setters
-    public Long getId() {
-        return id;
+    public void setAspi_id(Long aspi_id) {
+        this.aspi_id = aspi_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -106,13 +103,10 @@ public class Aspirante {
 
     public void setDocumentos(List<Documento> documentos) {
         this.documentos = documentos;
+        for (Documento documento: documentos){
+            documento.setAspirante(this);
+        }
     }
 
-    public List<Estudiante> getEstudiante() {
-        return estudiante;
-    }
 
-    public void setEstudiante(List<Estudiante> estudiante) {
-        this.estudiante = estudiante;
-    }
 }
