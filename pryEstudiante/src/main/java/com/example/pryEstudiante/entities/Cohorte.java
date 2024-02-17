@@ -22,4 +22,35 @@ public class Cohorte {
     @OneToMany (mappedBy = "cohorte", cascade = CascadeType.ALL)
     List<Estudiante> estudiante;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public List<Estudiante> getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(List<Estudiante> estudiante) {
+        this.estudiante = estudiante;
+    }
 }
