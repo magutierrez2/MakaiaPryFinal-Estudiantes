@@ -1,82 +1,65 @@
 package com.example.pryEstudiante.dtos;
 
-import java.util.Date;
-
 public class DocumentoDTO {
-    private Long id;
-    private String cedula;
-
-    private String acta;
-    private Boolean estado;
-    private String nombre_aspirante;
-    private Long aspirante_id;
-    private Long administrador_id;
+    private Long doc_id;
+    private String nombre_documento;
+    private String contenido_documento;
+    private EstadoDocumento estado;
+    private AspiranteDTO objAspirante;
 
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(String cedula, String acta, Boolean estado, String nombre_aspirante, Long aspirante_id, Long administrador_id) {
-        this.cedula = cedula;
-        this.acta = acta;
+    public DocumentoDTO(String nombre_documento,String contenido_documento, EstadoDocumento estado) {
+        this.nombre_documento = nombre_documento;
+        this.contenido_documento = contenido_documento;
         this.estado = estado;
-        this.nombre_aspirante = nombre_aspirante;
-        this.aspirante_id = aspirante_id;
-        this.administrador_id = administrador_id;
     }
 
-    public Long getId() {
-        return id;
+    public DocumentoDTO(String nombre_documento, String contenido_documento, EstadoDocumento estado, AspiranteDTO objAspirante) {
+        this.nombre_documento = nombre_documento;
+        this.contenido_documento = contenido_documento;
+        this.estado = estado;
+        this.objAspirante = objAspirante;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getDoc_id() {
+        return doc_id;
     }
 
-    public String getCedula() {
-        return cedula;
+    public void setDoc_id(Long doc_id) {
+        this.doc_id = doc_id;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public String getNombre_documento() {
+        return nombre_documento;
     }
 
-    public String getActa() {
-        return acta;
+    public void setNombre_documento(String nombre_documento) {
+        this.nombre_documento = nombre_documento;
     }
 
-    public void setActa(String acta) {
-        this.acta = acta;
+    public String getContenido_documento() {
+        return contenido_documento;
     }
 
-    public Boolean getEstado() {
+    public void setContenido_documento(String contenido_documento) {
+        this.contenido_documento = contenido_documento;
+    }
+
+    public EstadoDocumento getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(EstadoDocumento estado) {
         this.estado = estado;
     }
 
-    public String getNombre_aspirante() {
-        return nombre_aspirante;
+    public AspiranteDTO getObjAspirante() {
+        return objAspirante;
     }
 
-    public void setNombre_aspirante(String nombre_aspirante) {
-        this.nombre_aspirante = nombre_aspirante;
-    }
-
-    public Long getAspirante_id() {
-        return aspirante_id;
-    }
-
-    public void setAspirante_id(Long aspirante_id) {
-        this.aspirante_id = aspirante_id;
-    }
-
-    public Long getAdministrador_id() {
-        return administrador_id;
-    }
-
-    public void setAdministrador_id(Long administrador_id) {
-        this.administrador_id = administrador_id;
+    public void setObjAspirante(AspiranteDTO objAspirante) {
+        this.objAspirante = objAspirante;
     }
 }

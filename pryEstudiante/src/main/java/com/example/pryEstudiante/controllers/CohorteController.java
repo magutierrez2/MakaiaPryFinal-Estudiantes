@@ -7,39 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/cohorte")
 public class CohorteController {
-    private CohorteService cohService;
+    @Autowired
+    private CohorteService cohorteService;
 
-
-   /* @Autowired
-    public CohorteController(CohorteService cohService){
-        this.cohService = cohService;
+    @PostMapping
+    public Cohorte crearCohorte(@RequestBody CohorteDTO dto){
+        return this.cohorteService.crearCohorte(dto);
     }
-
-    @PostMapping()
-    public CohorteDTO crear(@RequestBody CohorteDTO dto){
-        return this.cohService.crear(dto);
+    @GetMapping
+    public List<Cohorte> listarCohorte(){
+        return this.cohorteService.listarCohorte();
     }
-    @GetMapping()
-    public List<CohorteDTO> listar(){
-        return this.cohService.listar();
-    }
-    @GetMapping("/cohorte/{id}")
-    public Optional<Cohorte> buscar(@PathVariable("id") Long id){
-        return this.cohService.buscar(id);
-    }
-    @PutMapping("/cohorte/{id}")
-    public Cohorte actualizar(@PathVariable("id") Long id, @RequestBody CohorteDTO body){
-        return this.cohService.actualizar(id, body);
-    }
-    @DeleteMapping("/Cohorte/{id}")
-    public void eliminar(@PathVariable("id") Long id){
-        this.cohService.eliminar(id);
-    }
-*/
 }
-

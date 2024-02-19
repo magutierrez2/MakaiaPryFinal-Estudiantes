@@ -1,85 +1,74 @@
 package com.example.pryEstudiante.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.example.pryEstudiante.dtos.EstadoDocumento;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "Documento")
 public class Documento {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long doc_id;
     @Column(length = 50)
-    private String cedula;
+    private String nombre_documento;
+    @Column(length = 255)
+    private String contenido_documento;
+    @Column()
+    @Enumerated(EnumType.STRING)
+    private EstadoDocumento estado;
 
-    @Column(length = 50)
-    private String acta;
-
-    @Column(length = 50)
-    private Boolean estado;
-    @Column(length = 50)
-    private String nombre_aspirante;
-
-    @ManyToOne(optional = false)
-    Aspirante aspirante;
-    @ManyToOne(optional =false)
-    Administrador administrador;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "aspi_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Aspirante aspirante;
 
     public Documento() {
     }
-    public Documento(String cedula, String acta, Boolean estado, String nombre_aspirante, Aspirante aspirante_id, Administrador administradot_id) {
-        this.cedula = cedula;
-        this.acta = acta;
+
+    public Documento(String nombre_documento, String contenido_documento, EstadoDocumento estado) {
+        this.nombre_documento = nombre_documento;
+        this.contenido_documento = contenido_documento;
         this.estado = estado;
-        this.nombre_aspirante = nombre_aspirante;
-        this.aspirante = aspirante_id;
-        this.administrador = administradot_id;
-
     }
 
-    public Long getId() {
-        return id;
+    public Documento(String nombre_documento, String contenido_documento, EstadoDocumento estado, Aspirante aspirante) {
+        this.nombre_documento = nombre_documento;
+        this.contenido_documento = contenido_documento;
+        this.estado = estado;
+        this.aspirante = aspirante;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getDoc_id() {
+        return doc_id;
     }
 
-    public String getCedula() {
-        return cedula;
+    public void setDoc_id(Long doc_id) {
+        this.doc_id = doc_id;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public String getNombre_documento() {
+        return nombre_documento;
     }
 
-    public String getActa() {
-        return acta;
+    public void setNombre_documento(String nombre_documento) {
+        this.nombre_documento = nombre_documento;
     }
 
-    public void setActa(String acta) {
-        this.acta = acta;
+    public String getContenido_documento() {
+        return contenido_documento;
     }
 
-    public Boolean getEstado() {
+    public void setContenido_documento(String contenido_documento) {
+        this.contenido_documento = contenido_documento;
+    }
+
+    public EstadoDocumento getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(EstadoDocumento estado) {
         this.estado = estado;
-    }
-
-    public String getNombre_aspirante() {
-        return nombre_aspirante;
-    }
-
-    public void setNombre_aspirante(String nombre_aspirante) {
-        this.nombre_aspirante = nombre_aspirante;
     }
 
     public Aspirante getAspirante() {
@@ -88,9 +77,5 @@ public class Documento {
 
     public void setAspirante(Aspirante aspirante) {
         this.aspirante = aspirante;
-    }
-
-    public Administrador getAdministrador() {
-        return administrador;
     }
 }
