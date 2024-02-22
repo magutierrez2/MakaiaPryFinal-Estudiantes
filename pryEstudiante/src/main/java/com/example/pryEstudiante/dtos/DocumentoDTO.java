@@ -3,22 +3,22 @@ package com.example.pryEstudiante.dtos;
 public class DocumentoDTO {
     private Long doc_id;
     private String nombre_documento;
-    private String contenido_documento;
+    private String ruta_archivo;
     private EstadoDocumento estado;
     private AspiranteDTO objAspirante;
 
     public DocumentoDTO() {
     }
 
-    public DocumentoDTO(String nombre_documento,String contenido_documento, EstadoDocumento estado) {
+    public DocumentoDTO(String nombre_documento,String ruta_archivo, EstadoDocumento estado) {
         this.nombre_documento = nombre_documento;
-        this.contenido_documento = contenido_documento;
+        this.ruta_archivo = ruta_archivo;
         this.estado = estado;
     }
 
-    public DocumentoDTO(String nombre_documento, String contenido_documento, EstadoDocumento estado, AspiranteDTO objAspirante) {
+    public DocumentoDTO(String nombre_documento, String ruta_archivo, EstadoDocumento estado, AspiranteDTO objAspirante) {
         this.nombre_documento = nombre_documento;
-        this.contenido_documento = contenido_documento;
+        this.ruta_archivo = ruta_archivo;
         this.estado = estado;
         this.objAspirante = objAspirante;
     }
@@ -39,12 +39,12 @@ public class DocumentoDTO {
         this.nombre_documento = nombre_documento;
     }
 
-    public String getContenido_documento() {
-        return contenido_documento;
+    public String getruta_archivo() {
+        return ruta_archivo;
     }
 
-    public void setContenido_documento(String contenido_documento) {
-        this.contenido_documento = contenido_documento;
+    public void setruta_archivo(String ruta_archivo) {
+        this.ruta_archivo = ruta_archivo;
     }
 
     public EstadoDocumento getEstado() {

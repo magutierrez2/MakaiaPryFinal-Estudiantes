@@ -4,6 +4,7 @@ import com.example.pryEstudiante.dtos.EstudianteDTO;
 import com.example.pryEstudiante.entities.Estudiante;
 import com.example.pryEstudiante.services.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,4 +23,10 @@ public class EstudianteController {
     public List<Estudiante> listarEst(){
         return this.estService.listarEstudiante();
     }
+
+    @PostMapping("/asignarCohorte")
+    public ResponseEntity asignarCohorte(@RequestParam("Id_Aspirante") Long idAspirante, @RequestParam("Id_Cohorte") Long idCohorte){
+        return this.estService.asignarCohorte(idAspirante,idCohorte);
+    }
+
 }
