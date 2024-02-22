@@ -13,10 +13,11 @@ public class Documento {
     @Column(length = 50)
     private String nombre_documento;
     @Column(length = 255)
-    private String contenido_documento;
+    private String ruta_archivo;
     @Column()
     @Enumerated(EnumType.STRING)
     private EstadoDocumento estado;
+    
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "aspi_id")
@@ -26,15 +27,15 @@ public class Documento {
     public Documento() {
     }
 
-    public Documento(String nombre_documento, String contenido_documento, EstadoDocumento estado) {
+    public Documento(String nombre_documento, String ruta_archivo, EstadoDocumento estado) {
         this.nombre_documento = nombre_documento;
-        this.contenido_documento = contenido_documento;
+        this.ruta_archivo = ruta_archivo;
         this.estado = estado;
     }
 
-    public Documento(String nombre_documento, String contenido_documento, EstadoDocumento estado, Aspirante aspirante) {
+    public Documento(String nombre_documento, String ruta_archivo, EstadoDocumento estado, Aspirante aspirante) {
         this.nombre_documento = nombre_documento;
-        this.contenido_documento = contenido_documento;
+        this.ruta_archivo = ruta_archivo;
         this.estado = estado;
         this.aspirante = aspirante;
     }
@@ -55,12 +56,12 @@ public class Documento {
         this.nombre_documento = nombre_documento;
     }
 
-    public String getContenido_documento() {
-        return contenido_documento;
+    public String getruta_archivo() {
+        return ruta_archivo;
     }
 
-    public void setContenido_documento(String contenido_documento) {
-        this.contenido_documento = contenido_documento;
+    public void setruta_archivo(String ruta_archivo) {
+        this.ruta_archivo = ruta_archivo;
     }
 
     public EstadoDocumento getEstado() {

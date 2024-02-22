@@ -17,8 +17,8 @@ import springfox.documentation.spring.web.plugins.Docket;
                 title = "Modulo Estudiante"
                 ),
         servers = {
-                @Server(url = "https://moduloestudiante-production.up.railway.app/", description = "Servidor de produccion"),
-                @Server(url = "https://localhost:8080/", description = "Servidor local")
+                @Server(url = "https://modulo-estudiante-production.up.railway.app/", description = "Servidor de produccion"),
+                @Server(url = "http://localhost:8080/", description = "Servidor local")
         }
 )
 
